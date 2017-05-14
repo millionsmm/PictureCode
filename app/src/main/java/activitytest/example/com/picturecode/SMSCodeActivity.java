@@ -35,7 +35,6 @@ import static activitytest.example.com.picturecode.R.id.code;
  */
 
 public class SMSCodeActivity extends AppCompatActivity implements View.OnClickListener{
-    public static final String TAG = "SMSCodeActivity";
 
     private Context mContext;
     private Intent mIntent;
@@ -57,7 +56,6 @@ public class SMSCodeActivity extends AppCompatActivity implements View.OnClickLi
                         btnCountdown.setEnabled(false);
                     // 正在倒计时
                     btnCountdown.setText("获取验证码(" + intent.getStringExtra("time") + ")");
-                    Log.e(TAG, "倒计时中(" + intent.getStringExtra("time") + ")");
                     break;
                 case RegisterCodeTimerService.END_RUNNING:
                     // 完成倒计时
@@ -74,7 +72,6 @@ public class SMSCodeActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.smscode_layout);
         mContext = this;
-        Log.e(TAG, "onStart 方法调用");
         // SMS初始化
         BmobSMS.initialize(mContext, "3d9d9f910c51b02eea3d605178911aa5");
         init();
@@ -97,7 +94,6 @@ public class SMSCodeActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e(TAG, "onDestroy 方法调用");
     }
 
     // 注册广播
